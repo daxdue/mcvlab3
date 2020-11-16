@@ -1,3 +1,6 @@
+from models import *
+from utils import *
+
 import torch
 from torch2trt import torch2trt
 from torch2trt import TRTModule
