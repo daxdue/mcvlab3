@@ -15,6 +15,10 @@ x1 = torch.ones((1, 3, 224, 224)).cuda()
 
 config_path='config/yolov3.cfg'
 weights_path='config/yolov3.weights'
+class_path='config/coco.names'
+img_size=416
+conf_thres=0.8
+nms_thres=0.4
 
 model = Darknet(config_path, img_size=img_size)
 model.load_weights(weights_path)
