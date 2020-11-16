@@ -28,7 +28,7 @@ img = Image.open(imageName)
 img_t = transform(img)
 batch_t = torch.unsqueeze(img_t, 0).cuda()
 
-out = model(batch_t)
+out = model(batch_t).cuda()
 print(out.shape)
 
 with open('imagenet_classes.txt') as f:
