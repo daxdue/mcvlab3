@@ -10,6 +10,7 @@ import time
 print("Insert image name")
 imageName = input()
 
+
 timest = time.time()
 model = alexnet(pretrained=True).eval().cuda()
 print("load time {}".format(time.time()-timest))
@@ -21,11 +22,11 @@ transforms.ToTensor(),
 transforms.Normalize(
 mean=[0.485, 0.456, 0.406],
 std=[0.229, 0.224, 0.225]
-)])
+)]).cuda()
 
 img = Image.open(imageName)
 img_t = transform(img)
-batch_t = torch.unsqueeze(img_t, 0)
+batch_t = torch.unsqueeze(img_t, 0).cuda()
 
 out = model(batch_t)
 print(out.shape)
