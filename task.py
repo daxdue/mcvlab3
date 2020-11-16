@@ -35,5 +35,7 @@ with open('imagenet_classes.txt') as f:
     classes = [line.strip() for line in f.readlines()]
 
 _, index = torch.max(out, 1)
+_, indices = torch.sort(out, descending=True)
+[(classes[idx], percentage[idx].item()) for idx in indices[0][:5]]
 percentage = torch.nn.functional.softmax(out, dim=1)[0] * 100
 print(classes[index[0]], percentage[index[0]].item())
