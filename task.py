@@ -34,7 +34,7 @@ with open('class_names_ImageNet.txt') as labels:
         classes = [i.strip() for i in labels.readlines()]
 
     # print the first 5 classes to see the labels
-    print("\nprint the first 5 classes to see the lables")
+
     for i in range(5):
         print("class " + str(i) + ": " + str(classes[i]))
 
