@@ -2,6 +2,9 @@ import torch
 from torch2trt import torch2trt
 from torch2trt import TRTModule
 from torchvision.models.alexnet import alexnet
+from torch.utils.data import DataLoader
+from torchvision import datasets, transforms
+from torch.autograd import Variable
 import time
 
 x1 = torch.ones((1, 3, 224, 224)).cuda()
