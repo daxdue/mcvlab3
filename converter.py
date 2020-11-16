@@ -6,6 +6,10 @@ import time
 
 x1 = torch.ones((1, 3, 224, 224)).cuda()
 
+
+config_path='config/yolov3.cfg'
+weights_path='config/yolov3.weights'
+
 model = Darknet(config_path, img_size=img_size)
 model.load_weights(weights_path)
 model.cuda()
