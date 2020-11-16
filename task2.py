@@ -36,7 +36,7 @@ if __name__ == "__main__":
     #print(test_image_filepath)
 
     # open the testing image
-    img = Image.open(test_image_filepath)
+    img = Image.open(opt.test_img)
     print("original image's shape: " + str(img.size))
     # pre-process the input
     transformed_img = data_transforms(img)
