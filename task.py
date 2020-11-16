@@ -29,14 +29,20 @@ img_t = transform(img)
 batch_t = torch.unsqueeze(img_t, 0).cuda()
 
 out = model(batch_t).cuda()
-print(out.shape)
 
-with open('imagenet_classes.txt') as f:
-    classes = [line.strip() for line in f.readlines()]
+with open('class_names_ImageNet.txt') as labels:
+        classes = [i.strip() for i in labels.readlines()]
 
-_, index = torch.max(out, 1)
+    # print the first 5 classes to see the labels
+    print("\nprint the first 5 classes to see the lables")
+    for i in range(5):
+        print("class " + str(i) + ": " + str(classes[i]))
 
-percentage = torch.nn.functional.softmax(out, dim=1)[0] * 100
-_, indices = torch.sort(out, descending=True)
-[print(classes[idx], percentage[idx].item()) for idx in indices[0][:5]]
-print(classes[index[0]], percentage[index[0]].item())
+    # sort the probability vector in descending order
+    sorted, indices = torch.sort(out, descending=True)
+    percentage = F.softmax(out, dim=1)[0] * 100.0
+    # obtain the first 5 classes (with the highest probability) the input belongs to
+    results = [(classes[i], percentage[i].item()) for i in indices[0][:5]]
+    print("\nprint the first 5 classes the testing image belongs to")
+    for i in range(5):
+        print('{}: {:.4f}%'.format(results[i][0], results[i][1]))
