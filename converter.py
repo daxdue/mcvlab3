@@ -26,5 +26,7 @@ model.cuda()
 model.eval()
 
 model_trt = torch2trt(model, [x1], use_onnx=True)
-torch.save(model_trt.state_dict(), 'alexnet_trt.pth')
+torch.save(model_trt.state_dict(), 'darknet_trt.pth')
 exit()
+
+#https://github.com/jkjung-avt/jetson_nano/blob/master/install_protobuf-3.8.0.sh

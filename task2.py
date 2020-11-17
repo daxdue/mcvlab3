@@ -75,3 +75,9 @@ if __name__ == "__main__":
     print("\nprint the first 5 classes the testing image belongs to")
     for i in range(5):
         print('{}: {:.4f}%'.format(results[i][0], results[i][1]))
+
+    tensor_image = torch.tensor(...)
+    new_img = torchvision.utils.draw_bounding_box(
+    tensor_image,
+    [x_min, y_min, x_max, y_max],
+    )
